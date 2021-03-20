@@ -1,0 +1,19 @@
+name: Test
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: "federated-container-action"
+
+      - name: Local action test
+        id: container
+        uses: ./
+        with:
+          exposes: "federated-container-action/test/exposes.js"
+
+      - run: echo ${{ steps.container.outputs.path }}
