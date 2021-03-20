@@ -16,5 +16,5 @@ jobs:
         with:
           exposes: "test/exposes.js"
 
-      - run: echo ${{ steps.container.outputs.path }}
+      - run: ls -lh ${{ steps.container.outputs.path }}
         if: ${{ !env.ACT }}
