@@ -3,18 +3,16 @@ on: push
 
 jobs:
   test:
+    if: ${{ !env.ACT }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        if: ${{ !env.ACT }}
 
       - name: Local action test
-        if: ${{ !env.ACT }}
         id: container
         uses: ./
         with:
           exposes: "test/exposes.js"
 
       - run: ls -lh ${{ steps.container.outputs.path }}
-        if: ${{ !env.ACT }}
