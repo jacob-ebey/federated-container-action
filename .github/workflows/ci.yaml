@@ -3,7 +3,7 @@ on: push
 
 jobs:
   test:
-    if: ${{ !env.ACT }}
+    if: ${{ !Boolean(env.ACT) }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
