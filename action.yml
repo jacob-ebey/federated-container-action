@@ -11,7 +11,9 @@ inputs:
     description: "Path to webpack.config.js"
     default: "./webpack.config.js"
 outputs:
-  path:
+  path0:
+    description: "The path of the build"
+  path1:
     description: "The path of the build"
 
 runs:

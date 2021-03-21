@@ -9,12 +9,30 @@ jobs:
         if: ${{ !env.ACT }}
         uses: actions/checkout@v2
 
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "12"
+        if: ${{ !env.ACT }}
+
+      - run: |
+          cd test
+          yarn
+        if: ${{ !env.ACT }}
+
       - name: Local action test
         if: ${{ !env.ACT }}
         id: container
         uses: ./
         with:
           exposes: "test/exposes.js"
+          config: "test/webpack.config.js"
 
-      - run: ls -lh ${{ steps.container.outputs.path }}
+      - run: echo ${{ steps.container.outputs.path0 }}
+        if: ${{ !env.ACT }}
+      - run: ls -lh ${{ steps.container.outputs.path0 }}
+        if: ${{ !env.ACT }}
+
+      - run: echo ${{ steps.container.outputs.path1 }}
+        if: ${{ !env.ACT }}
+      - run: ls -lh ${{ steps.container.outputs.path1 }}
         if: ${{ !env.ACT }}

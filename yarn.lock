@@ -330,7 +330,7 @@ chalk@^4.1.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-child-process-promise@^2.2.1:
+child-process-promise@2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/child-process-promise/-/child-process-promise-2.2.1.tgz#4730a11ef610fad450b8f223c79d31d7bdad8074"
   integrity sha1-RzChHvYQ+tRQuPIjx50x172tgHQ=
@@ -552,7 +552,7 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-esbuild-node-externals@^1.0.3:
+esbuild-node-externals@1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/esbuild-node-externals/-/esbuild-node-externals-1.0.3.tgz#fa87fab29ac5b714eaa6ee7c37d11fa01f7b9bdd"
   integrity sha512-PmH99ESCSDpUlpUf72fxFBcqAvu95KcgptwE7KwaAJ3+TvdffT6TsCTMhNr8RZj6jCM4uXW9IJVvVmRVG3ZfgA==
@@ -560,10 +560,10 @@ esbuild-node-externals@^1.0.3:
     find-up "5.0.0"
     tslib "2.1.0"
 
-esbuild@0.9.5:
-  version "0.9.5"
-  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.9.5.tgz#200e7836580c0a78849ee257656efd40dbf0b4df"
-  integrity sha512-ZBOtZX9HxgSdwkAroVifEUgylWqbOjqbu1i1ohRvhoaYt6aj81dxbizODx419gwDAupqut44ehFVwUq7WRN/OA==
+esbuild@0.9.6:
+  version "0.9.6"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.9.6.tgz#2cae519e7ce2328ecf57ae738090d07ce7245850"
+  integrity sha512-F6vASxU0wT/Davt9aj2qtDwDNSkQxh9VbyO56M7PDWD+D/Vgq/rmUDGDQo7te76W5auauVojjnQr/wTu3vpaUA==
 
 escalade@^3.1.1:
   version "3.1.1"
@@ -1596,7 +1596,12 @@ watchpack@^2.0.0:
     glob-to-regexp "^0.4.1"
     graceful-fs "^4.1.2"
 
-webpack-merge@^5.7.3:
+webpack-federated-stats-plugin@2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/webpack-federated-stats-plugin/-/webpack-federated-stats-plugin-2.0.5.tgz#ea184231f2cc380082af54fef5d1a9b05255b002"
+  integrity sha512-Ji+RVg3+0joPAXqqv8F9wD4lyq8ibxqYu3vzp8gaBOy7jdHcnn8egZ0KV08S5KbBlxP1n7jzq0kSN+M5uMaWyA==
+
+webpack-merge@5.7.3:
   version "5.7.3"
   resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-5.7.3.tgz#2a0754e1877a25a8bbab3d2475ca70a052708213"
   integrity sha512-6/JUQv0ELQ1igjGDzHkXbVDRxkfA57Zw7PfiupdLFJYrgFqY5ZP8xxbpp2lU3EPwYx89ht5Z/aDkD40hFCm5AA==
@@ -1612,10 +1617,10 @@ webpack-sources@^2.1.1:
     source-list-map "^2.0.1"
     source-map "^0.6.1"
 
-webpack@^5.27.0:
-  version "5.27.0"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.27.0.tgz#387458f83142253f2759e22415dc1359746e6940"
-  integrity sha512-So7grHu//UyJ+80VrNHjWwW6WSZkfWWD6a7NV/88r8G92PO6TYOGzbtTiZBwbPVkx6LVP8OYvHD+IxuJ2KBz4g==
+webpack@5.27.1:
+  version "5.27.1"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.27.1.tgz#6808fb6e45e35290cdb8ae43c7a10884839a3079"
+  integrity sha512-rxIDsPZ3Apl3JcqiemiLmWH+hAq04YeOXqvCxNZOnTp8ZgM9NEPtbu4CaMfMEf9KShnx/Ym8uLGmM6P4XnwCoA==
   dependencies:
     "@types/eslint-scope" "^3.7.0"
     "@types/estree" "^0.0.46"
