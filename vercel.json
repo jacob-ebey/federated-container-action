@@ -3,10 +3,7 @@
   "builds": [
     {
       "src": "/test/dist/vercel.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["/test/.container/server/**"]
-      }
+      "use": "@vercel/node"
     },
     {
       "src": "/test/.container/**",
