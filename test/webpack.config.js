@@ -1,5 +1,5 @@
 /** @type {import("webpack").Configuration} */
-const config = {
+const clientConfig = {
   module: {
     rules: [
       {
