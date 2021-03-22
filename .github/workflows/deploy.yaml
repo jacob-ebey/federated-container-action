@@ -22,7 +22,7 @@ jobs:
           yarn
         if: ${{ !env.ACT }}
 
-        - run: |
+      - run: |
           cd test
           yarn build:lambda
         if: ${{ !env.ACT }}
