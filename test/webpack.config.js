@@ -21,6 +21,9 @@ const clientConfig = {
 /** @type {import("webpack").Configuration} */
 const serverConfig = {
   target: "node",
+  output: {
+    library: { type: "commonjs" },
+  },
   module: {
     rules: [
       {

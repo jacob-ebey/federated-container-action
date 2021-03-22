@@ -78,6 +78,7 @@ export async function makeConfig(): Promise<Configuration[]> {
       shared,
     };
 
+    console.log(baseConfig.target);
     if (baseConfig.target !== "node") {
       baseConfig.plugins = baseConfig.plugins || [];
       baseConfig.plugins.push(
