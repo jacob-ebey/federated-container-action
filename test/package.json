@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "vercel-build": "yarn build:lambda && yarn build:containers",
+    "build": "yarn build:lambda && yarn build:containers",
     "build:lambda": "webpack --mode development -c ./webpack.lambda.config.js",
     "build:containers": "node ../dist/action.js"
   },
