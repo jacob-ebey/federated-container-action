@@ -18,4 +18,22 @@ const config = {
   },
 };
 
-module.exports = config;
+/** @type {import("webpack").Configuration} */
+const serverConfig = {
+  target: "node",
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        use: {
+          loader: require.resolve("babel-loader"),
+          options: {
+            presets: [require.resolve("@babel/preset-react")],
+          },
+        },
+      },
+    ],
+  },
+};
+
+module.exports = [clientConfig, serverConfig];
