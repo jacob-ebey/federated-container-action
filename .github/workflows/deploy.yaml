@@ -1,5 +1,8 @@
-name: CI
-on: push
+name: Deploy
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   test:
