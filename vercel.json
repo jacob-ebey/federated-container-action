@@ -1,24 +1,8 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "/test/dist/vercel.js",
-      "use": "@vercel/node",
-      "includeFiles": "/test/.container/server/**"
-    },
-    {
-      "src": "/test/.container/**",
-      "use": "@vercel/static"
+  "functions": {
+    "test/dist/vercel.js": {
+      "includeFiles": "test/{dist,.container}/**"
     }
-  ],
-  "routes": [
-    {
-      "src": "/static/(.*)",
-      "dest": "/test/.container/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/test/dist/vercel.js"
-    }
-  ]
+  }
 }
