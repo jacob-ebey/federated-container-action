@@ -19,11 +19,33 @@ async function loadExposes() {
   ];
 }
 
+async function loadShared() {
+  try {
+    const sharedInput = getInput("shared") || "./shared.js";
+
+    const sharedPath = path.resolve(sharedInput);
+
+    const sharedModule = require(sharedPath);
+    return [
+      await (typeof sharedModule === "function"
+        ? sharedModule()
+        : sharedModule),
+      path.dirname(sharedPath),
+    ];
+  } catch (err) {
+    warning("Failed to load shared");
+    warning(err);
+  }
+
+  return [[]];
+}
+
 export async function makeConfig(): Promise<Configuration[]> {
   /** @type {import("webpack")} */
   const webpack = require("webpack");
 
   const [exposes, context] = await loadExposes();
+  const [shared] = await loadShared();
   const configInput = getInput("config") || "./webpack.config.js";
   const configPath = path.resolve(configInput);
   let userConfig: Configuration | Configuration[] = {};
@@ -34,19 +56,13 @@ export async function makeConfig(): Promise<Configuration[]> {
     warning(err);
   }
 
-  const federationConfig: Configuration = {
+  const defaultConfig: Configuration = {
     context,
     entry: { noop: path.resolve(__dirname, "../noop.js") },
     output: {
       path: path.resolve(".container/client"),
     },
     mode: "production",
-    plugins: [
-      new webpack.container.ModuleFederationPlugin({
-        name: "test",
-        exposes,
-      }),
-    ],
   };
 
   if (!Array.isArray(userConfig)) {
@@ -54,7 +70,13 @@ export async function makeConfig(): Promise<Configuration[]> {
   }
 
   return userConfig.map((config) => {
-    const baseConfig = merge(config, federationConfig, {});
+    const baseConfig = merge(defaultConfig, config, {});
+
+    const federationConfig: any = {
+      name: "test",
+      exposes,
+      shared,
+    };
 
     if (baseConfig.target !== "node") {
       baseConfig.plugins = baseConfig.plugins || [];
@@ -64,7 +86,16 @@ export async function makeConfig(): Promise<Configuration[]> {
     } else {
       baseConfig.output = baseConfig.output || {};
       baseConfig.output.path = path.resolve(".container/server");
+      if (!baseConfig.output.library) {
+        baseConfig.output.library = { type: "commonjs" };
+      }
+      federationConfig.library = { type: "commonjs" };
     }
+
+    baseConfig.plugins = baseConfig.plugins || [];
+    baseConfig.plugins.push(
+      new webpack.container.ModuleFederationPlugin(federationConfig)
+    );
 
     return baseConfig;
   });

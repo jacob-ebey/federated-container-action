@@ -7,6 +7,9 @@ inputs:
   exposes:
     description: "Path to exposes.js"
     default: "./exposes.js"
+  shared:
+    description: "Path to shared.js"
+    default: "./shared.js"
   config:
     description: "Path to webpack.config.js"
     default: "./webpack.config.js"

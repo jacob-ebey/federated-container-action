@@ -3,11 +3,22 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "build": "yarn build:lambda && yarn build:containers",
+    "build:lambda": "webpack --mode development -c ./webpack.lambda.config.js",
+    "build:containers": "node ../dist/action.js"
+  },
   "devDependencies": {
     "@babel/core": "7.13.10",
     "@babel/preset-env": "7.13.10",
     "@babel/preset-react": "7.12.13",
     "babel-loader": "8.2.2",
+    "webpack": "5.27.1",
+    "webpack-cli": "4.5.0",
     "webpack-merge": "5.7.3"
+  },
+  "dependencies": {
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
   }
 }

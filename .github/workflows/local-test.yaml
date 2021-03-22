@@ -21,20 +21,21 @@ jobs:
           yarn
         if: ${{ env.ACT }}
 
+      - run: |
+          cd federated-container-action/test
+          yarn build:lambda
+        if: ${{ env.ACT }}
+
       - name: Local action test
         if: ${{ env.ACT }}
         id: container
         uses: ./
         with:
-          exposes: "federated-container-action/test/exposes.js"
           config: "federated-container-action/test/webpack.config.js"
+          exposes: "federated-container-action/test/exposes.js"
+          shared: "federated-container-action/test/shared.js"
 
       - run: echo ${{ steps.container.outputs.path0 }}
         if: ${{ env.ACT }}
       - run: ls -lh ${{ steps.container.outputs.path0 }}
-        if: ${{ env.ACT }}
-
-      - run: echo ${{ steps.container.outputs.path1 }}
-        if: ${{ env.ACT }}
-      - run: ls -lh ${{ steps.container.outputs.path1 }}
         if: ${{ env.ACT }}
