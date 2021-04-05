@@ -1,5 +1,7 @@
 import React from "react";
 
 export default function HeroComponent() {
-  return <h1>Hello, World!</h1>;
+  const onClick = () => alert("Hello, World!");
+
+  return <button onClick={onClick}>Hello, World!</button>;
 }
